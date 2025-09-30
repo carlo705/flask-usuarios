@@ -1,7 +1,7 @@
 ## Flash CRUD MVC
 
 # Estructura
-
+```
 flask_crud_mvc/
 │
 ├── venv/                          # Virtual environment
@@ -39,6 +39,7 @@ flask_crud_mvc/
 │
 ├── requirements.txt
 └── run.py                        # Punto de entrada
+```
 
 # 1. Requisitos Previos
 
