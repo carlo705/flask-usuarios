@@ -1,6 +1,6 @@
-## Flash CRUD MVC
+# Flash CRUD MVC
 
-# Estructura
+## Estructura
 ```
 flask_crud_mvc/
 │
@@ -41,27 +41,27 @@ flask_crud_mvc/
 └── run.py                        # Punto de entrada
 ```
 
-# 1. Requisitos Previos
+## 1. Requisitos Previos
 
 Python 3.8 o superior instalado
 MySQL Server instalado y ejecutándose
 pip (gestor de paquetes de Python)
 
-# 2 Crear el proyecto
+## 2 Crear el proyecto
 
-# Crear directorio del proyecto
+## Crear directorio del proyecto
 mkdir flask_crud_mvc
 cd flask_crud_mvc
 
-# Crear la estructura de carpetas
+## Crear la estructura de carpetas
 mkdir -p app/{models,repositories,services,controllers,templates,static/css}
 
-# 3 crear entorno virtual 
+## 3 crear entorno virtual 
 py -m venv env
 env\Scripts\activate
 
-# 4 instalar librerias
+## 4 instalar librerias
 pip install -r requirements.txt
 
-# 5 ejecutar
+## 5 ejecutar
 py run.py
