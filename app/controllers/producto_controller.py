@@ -8,7 +8,7 @@ producto_service = ProductoService()
 def index():
     """Listar todos los productos"""
     productos = producto_service.listar_productos()
-    return render_template('index.html', productos=productos)
+    return render_template('producto/index.html', productos=productos)
 
 @producto_bp.route('/producto/<int:id>')
 def ver(id):
@@ -17,7 +17,7 @@ def ver(id):
     if not producto:
         flash('Producto no encontrado', 'error')
         return redirect(url_for('productos.index'))
-    return render_template('ver.html', producto=producto)
+    return render_template('producto/ver.html', producto=producto)
 
 @producto_bp.route('/producto/crear', methods=['GET', 'POST'])
 def crear():
@@ -39,7 +39,7 @@ def crear():
             for error in resultado['errores']:
                 flash(error, 'error')
     
-    return render_template('crear.html')
+    return render_template('producto/crear.html')
 
 @producto_bp.route('/producto/editar/<int:id>', methods=['GET', 'POST'])
 def editar(id):
@@ -67,7 +67,7 @@ def editar(id):
             for error in resultado['errores']:
                 flash(error, 'error')
     
-    return render_template('editar.html', producto=producto)
+    return render_template('producto/editar.html', producto=producto)
 
 @producto_bp.route('/producto/eliminar/<int:id>', methods=['POST'])
 def eliminar(id):
