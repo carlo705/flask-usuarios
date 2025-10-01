@@ -56,4 +56,12 @@ cd flask_crud_mvc
 # Crear la estructura de carpetas
 mkdir -p app/{models,repositories,services,controllers,templates,static/css}
 
-#3 
+# 3 crear entorno virtual 
+py -m venv env
+env\Scripts\activate
+
+# 4 instalar librerias
+pip install -r requirements.txt
+
+# 5 ejecutar
+py run.py
