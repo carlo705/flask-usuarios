@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}CRUD Productos{% endblock %}</title>
+    <title>{% block title %}CRUD Usuarios{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <h1><a href="{{ url_for('productos.index') }}">Gestión de Productos</a></h1>
-            <a href="{{ url_for('productos.crear') }}" class="btn btn-primary">Nuevo Producto</a>
+            <h1><a href="{{ url_for('auth.login') }}">Gestión Usuarios</a></h1>
+            {% if session.get('user_id') %}
+                <a href="{{ url_for('usuarios.panel') }}">Panel</a>
+                <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+            {% endif %}
         </div>
     </nav>
 
@@ -27,7 +32,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Sistema de Gestión de Productos</p>
+    <p>&copy; 2025 Sistema de Gestión de Usuarios</p>
     </footer>
 </body>
 </html>

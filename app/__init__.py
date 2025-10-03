@@ -6,8 +6,13 @@ def create_app():
     # Configuración
     app.config.from_object('app.config.Config')
     
-    # Registrar blueprints
-    from app.controllers.producto_controller import producto_bp
-    app.register_blueprint(producto_bp)
+    # Blueprints para usuarios y autenticación
+    from app.controllers.usuario_controller import usuario_bp
+    from app.controllers.auth_controller import auth_bp
+    app.register_blueprint(usuario_bp)
+    app.register_blueprint(auth_bp)
+
+    # Configuración de secret key (ya cargado desde Config)
+    app.secret_key = app.config.get('SECRET_KEY')
     
     return app

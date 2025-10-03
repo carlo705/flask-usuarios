@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Ver Usuario{% endblock %}
+
+{% block content %}
+<h2>Ver Usuario</h2>
+<div class="card">
+    <div class="card-body">
+        <p><strong>ID:</strong> {{ usuario.id }}</p>
+        <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+        <p><strong>Email:</strong> {{ usuario.email }}</p>
+        <p><strong>Rol:</strong> {{ usuario.rol }}</p>
+    </div>
+</div>
+<p><a href="{{ url_for('usuarios.panel') }}">Volver al panel</a></p>
+<div class="form-actions">
+    {% if session.get('user_rol') == 'admin' %}
+        <a href="{{ url_for('usuarios.editar', id=usuario.id) }}" class="btn btn-warning">Editar</a>
+        <form action="{{ url_for('usuarios.eliminar', id=usuario.id) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Está seguro de eliminar este usuario?');">
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

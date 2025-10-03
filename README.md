@@ -1,67 +1,89 @@
 # Flash CRUD MVC
 
 ## Estructura
+# Flask Usuarios (CRUD + Login)
+
+Aplicación de ejemplo en Flask que implementa autenticación básica (login) y un CRUD de usuarios
+usando MySQL. Esta versión está pensada para pruebas locales/educativas.
+
+## Estructura del proyecto
+
 ```
-flask_crud_mvc/
-│
-├── venv/                          # Virtual environment
-│
+flask-crud-mvc/
 ├── app/
-│   ├── __init__.py               # Inicialización de la app Flask
-│   ├── config.py                 # Configuración de la BD
-│   │
-│   ├── models/
-│   │   ├── __init__.py
-│   │   └── producto.py           # Modelo Producto
-│   │
-│   ├── repositories/
-│   │   ├── __init__.py
-│   │   └── producto_repository.py
-│   │
-│   ├── services/
-│   │   ├── __init__.py
-│   │   └── producto_service.py
-│   │
-│   ├── controllers/
-│   │   ├── __init__.py
-│   │   └── producto_controller.py
-│   │
-│   ├── templates/
+│   ├── __init__.py            # Inicialización de la app y registro de blueprints
+│   ├── config.py              # Configuración (MYSQL_*, SECRET_KEY)
+│   ├── controllers/           # Blueprints: auth, usuarios
+│   │   ├── auth_controller.py
+│   │   └── usuario_controller.py
+│   ├── models/                # Modelos (Usuario)
+│   │   └── usuario.py
+│   ├── repositories/          # Acceso a la DB (UsuarioRepository)
+│   │   └── usuario_repository.py
+│   ├── services/              # Lógica de negocio (UsuarioService)
+│   │   └── usuario_service.py
+│   ├── templates/             # Plantillas Jinja2
 │   │   ├── base.html
 │   │   ├── index.html
-│   │   ├── crear.html
-│   │   ├── editar.html
-│   │   └── ver.html
-│   │
+│   │   ├── auth/login.html
+│   │   └── usuario/ (crear, editar, index, ver)
 │   └── static/
-│       └── css/
-│           └── style.css
-│
+│       └── css/style.css
+├── database.sql               # Script para crear BD y tablas de ejemplo
 ├── requirements.txt
-└── run.py                        # Punto de entrada
+└── run.py                     # Punto de entrada
 ```
 
-## 1. Requisitos Previos
+## Requisitos
 
-Python 3.8 o superior instalado
-MySQL Server instalado y ejecutándose
-pip (gestor de paquetes de Python)
+- Python 3.8+ (se probó con 3.9)
+- MySQL Server en ejecución
+- pip
 
-## 2 Crear el proyecto
+## Instalación rápida
 
-## Crear directorio del proyecto
-mkdir flask_crud_mvc
-cd flask_crud_mvc
+1. Crear/activar virtualenv (ejemplo macOS / zsh):
 
-## Crear la estructura de carpetas
-mkdir -p app/{models,repositories,services,controllers,templates,static/css}
+```bash
+python3 -m venv env
+source env/bin/activate
+```
 
-## 3 crear entorno virtual 
-py -m venv env
-env\Scripts\activate
+2. Instalar dependencias:
 
-## 4 instalar librerias
+```bash
 pip install -r requirements.txt
+```
 
-## 5 ejecutar
-py run.py
+3. Crear la base de datos y tablas (ajusta credenciales si es necesario):
+
+```bash
+# Usa el cliente mysql y ejecuta el script
+mysql -u root -p < database.sql
+```
+
+4. (Opcional) Poblar ejemplos: el script `database.sql` incluye instrucciones comentadas para insertar
+	 un admin y un usuario de ejemplo (puedes usar contraseñas en texto plano para pruebas locales).
+
+5. Ejecutar la aplicación:
+
+```bash
+# puerto por defecto 5000
+env/bin/python run.py
+```
+
+6. Abrir en el navegador:
+
+- Página de login: http://127.0.0.1:5000/login
+- Panel (lista de usuarios, requiere login): http://127.0.0.1:5000/admin
+
+## Notas importantes
+
+- Por seguridad, en una app real debes almacenar contraseñas hasheadas. Esta versión permite
+	usar texto plano para pruebas (según configuración/ediciones hechas).
+- No dejes la aplicación con bypasses inseguros ni con las contraseñas en texto plano en entornos
+	compartidos o producción.
+
+Si quieres, puedo:
+- Añadir comandos para crear un usuario admin desde la terminal (con hash),
+- Revertir los cambios inseguros y proporcionar un flujo completo con hashing y creación de admin.
