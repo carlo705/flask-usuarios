@@ -68,22 +68,11 @@ mysql -u root -p < database.sql
 5. Ejecutar la aplicación:
 
 ```bash
-# puerto por defecto 5000
+# puerto 6500
 env/bin/python run.py
 ```
 
 6. Abrir en el navegador:
 
-- Página de login: http://127.0.0.1:5000/login
-- Panel (lista de usuarios, requiere login): http://127.0.0.1:5000/admin
-
-## Notas importantes
-
-- Por seguridad, en una app real debes almacenar contraseñas hasheadas. Esta versión permite
-	usar texto plano para pruebas (según configuración/ediciones hechas).
-- No dejes la aplicación con bypasses inseguros ni con las contraseñas en texto plano en entornos
-	compartidos o producción.
-
-Si quieres, puedo:
-- Añadir comandos para crear un usuario admin desde la terminal (con hash),
-- Revertir los cambios inseguros y proporcionar un flujo completo con hashing y creación de admin.
+- Página de login: http://127.0.0.1:6500/login
+- Panel (lista de usuarios, requiere login): http://127.0.0.1:6500/admin
