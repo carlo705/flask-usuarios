@@ -1,5 +1,8 @@
 -- database.sql
 -- Ajustado para usar la base por defecto 'flask_crud_db' (ver app/config.py)
+
+drop database flask_crud_db;
+
 CREATE DATABASE IF NOT EXISTS flask_crud_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE flask_crud_db;
